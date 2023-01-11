@@ -38,7 +38,8 @@ We give you the benefits and services to improve your health and happiness.
 ````json
 {
   "email": "test@pirkx.com",
-  "password": "Welcome@123"
+  "password": "Welcome@123",
+  "remember_me": true
 }
 ````
 
@@ -48,6 +49,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 email | String | (required)
 password | String | (required)
+remember_me | String/Boolean | values in true, false (required)
 
 > JSON response format:
 
@@ -411,7 +413,7 @@ ids | Array | IDs of patrons that needs to be deleted
 {
   "status": 404,
   "success": false,
-  "message": "No admin user found with ids [\"100\", \"200\"]"
+  "message": "No admin user found with ids 100, 200"
 }
 ```
 
@@ -457,7 +459,7 @@ blocked | String/Boolean | available options - true, false
 {
   "status": 404,
   "success": false,
-  "message": "No admin user found with ids [\"100\", \"200\"]"
+  "message": "No admin user found with ids [100, 200]"
 }
 ```
 
@@ -619,8 +621,8 @@ If the ids mentioned does not exist, it shows error.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-invitation[first_name] | String | Sets first name of patron
-invitation[last_name] | String | Sets last name of patron
+invitation[first_name] | String | Sets first name of patron (required)
+invitation[last_name] | String | Sets last name of patron (required)
 invitation[email] | String | Sets email of patron (required)
 invitation[invitation_for] | String | Type of invitee (required)<br> Available options: 'master_admin', 'parent_admin'
 invitation[phone_number] | Number | Sets phone number of patron
@@ -671,7 +673,6 @@ Parameter | Type | Description
 --------- | ------- | -----------
 user[first_name] | String | Sets first name of patron (required)
 user[last_name] | String | Sets last name of patron (required)
-user[email] | String | Email of patron (required)
 user[password] | String | Sets password for patron(required)
 user[token] | String | unique verification token of patron (required)
 
@@ -733,7 +734,7 @@ email | String | Email of patron (required)
 
 This endpoint allows patron to send reset password mail.
 
-## User Reset Password
+## User Reset Password (When User Sets His Password Via Forgot Password Mail)
 ### HTTP Request
 > JSON request format:
 
@@ -773,7 +774,45 @@ reset_password_token | String | Unique reset password token (required)
 }
 ```
 
-This endpoint allows patron to reset his password.
+This endpoint allows patron to reset his password, when user is not logged in.
+
+## User Reset Password (When Admin Sends Reset Password Mail For Other User)
+### HTTP Request
+> JSON request format:
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/users/reset_password`
+
+````json
+{
+  "id": 1
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Number | Id of the patron to whom reset password mail is to be sent (required)
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Password reset instructions sent."
+}
+
+// Example of failure response
+{
+  "status": 400,
+  "success": false,
+  "message": "User not found."
+}
+```
+
+This endpoint allows admin to send reset password mail to other user.
 
 # Parent Versions
 ## Create Parent Versions
@@ -1099,7 +1138,7 @@ ids | Array | Ids of parent versions
 {
   "status": 404,
   "success": false,
-  "message": "No parent version listed with id [\"100\", \"200\"]"
+  "message": "No parent version listed with ids 100, 200"
 }
 ```
 
