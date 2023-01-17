@@ -139,11 +139,9 @@ This endpoint allows patron to sign out.
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136"
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 
@@ -152,6 +150,12 @@ This endpoint allows patron to sign out.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -221,11 +225,9 @@ This endpoint shows details of all admin users.
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136"
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 
@@ -234,6 +236,12 @@ This endpoint shows details of all admin users.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -276,11 +284,13 @@ This endpoint shows details of the requested admin user.
 `PUT https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "patron": {
     "id": 2,
     "first_name": "new",
@@ -298,6 +308,12 @@ patron[id] | Number | Id of Patron to update
 patron[first_name] | String | Sets first name for patron
 patron[last_name] | String | Sets last name for patron
 patron[phone_number] | Number | Sets phone number for patron
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -340,11 +356,9 @@ This endpoint updates details of the specific admin user.
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136"
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 
@@ -353,6 +367,12 @@ This endpoint updates details of the specific admin user.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -382,11 +402,13 @@ This endpoint delete specific admin user.
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/destroy_all`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "ids": [
     100, 200
   ]
@@ -398,6 +420,12 @@ This endpoint delete specific admin user.
 Parameter | Type | Description
 --------- | ------- | -----------
 ids | Array | IDs of patrons that needs to be deleted
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -426,11 +454,13 @@ This endpoint delete specific admin users.
 `PATCH https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/block`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "ids": [
     100, 200
   ],
@@ -444,6 +474,12 @@ Parameter | Type | Description
 --------- | ------- | -----------
 ids | Array | IDs of patrons that needs to be deleted
 blocked | String/Boolean | available options - true, false
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -472,11 +508,13 @@ This endpoint block all specific admin users.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/search`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "patron": {
     "query_string": "test",
     "page_no": 2
@@ -490,6 +528,12 @@ Parameter | Type | Description
 --------- | ------- | -----------
 patron[query_string] | String | Search string for patrons (searched in patron email and name)
 patron[page_no] | Integer | Page number of the paginated serach results <br> (default - per page is 10)
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -549,11 +593,13 @@ The query string searches for the particular string in Patron name and email.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/export`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "patron": {
     "export": {
       "export_ids": ""
@@ -567,6 +613,13 @@ The query string searches for the particular string in Patron name and email.
 Parameter | Type | Description
 --------- | ------- | -----------
 export[export_ids] | String | Ids of admin patrons that needs to export <br> (ids are seperated by ,) ex: "100, 200"
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+
 
 If no ids (ie, empty string "") are passed in :export_ids param, all admin users are exported.
 
@@ -601,11 +654,13 @@ If the ids mentioned does not exist, it shows error.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/users/invite`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
- "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
  "invitation": {
     "first_name": "test",
     "last_name": "test",
@@ -627,6 +682,12 @@ invitation[email] | String | Sets email of patron (required)
 invitation[invitation_for] | String | Type of invitee (required)<br> Available options: 'master_admin', 'parent_admin'
 invitation[phone_number] | Number | Sets phone number of patron
 invitation[parent_version_id] | Number | Sets parent version for the parent_admin patron<br> (required if invitation_for parent_admin)
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -783,6 +844,12 @@ This endpoint allows patron to reset his password, when user is not logged in.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/users/reset_password`
 
 ````json
+"-> auth token to be sent in headers"
+{
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
 {
   "id": 1
 }
@@ -793,6 +860,12 @@ This endpoint allows patron to reset his password, when user is not logged in.
 Parameter | Type | Description
 --------- | ------- | -----------
 id | Number | Id of the patron to whom reset password mail is to be sent (required)
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -822,11 +895,13 @@ This endpoint allows admin to send reset password mail to other user.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "parent_version": {
     "parent_name": "UK",
     "country_id": 1,
@@ -848,6 +923,12 @@ parent_version[currency] | String | Sets currency for the parent version (requir
 parent_version[tax_rate_in_percentage] | Decimal Number | Sets tax rate (in percentage) for the parent version (required)
 parent_version[domain_extension] | String | Sets subdomain for the parent version (required) <br> Maximum - 10 characters, must not contain spaces
 parent_version[parent_abbreviation] | String | Sets parent abbreviation for the parent version (required) <br> Maximum - 10 characters
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -876,11 +957,9 @@ This endpoint allows MasterAdmin to create parent versions.
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136"
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 
@@ -889,6 +968,12 @@ This endpoint allows MasterAdmin to create parent versions.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -945,11 +1030,9 @@ This endpoint shows the list of all parent versions.
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136"
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 
@@ -958,6 +1041,12 @@ This endpoint shows the list of all parent versions.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -1001,11 +1090,13 @@ This endpoint shows the details of the requested parent version.
 `PUT https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "parent_version": {
     "parent_name": "United Kingdom",
     "tax_rate_in_percentage": 5.1,
@@ -1022,6 +1113,12 @@ parent_version[parent_name] | String | Sets parent name for the Parent version (
 parent_version[tax_rate_in_percentage] | Decimal Number | Sets tax rate (in percentage) for the parent version (required)
 parent_version[domain_extension] | String | Sets subdomain for the parent version (required) <br> Maximum - 10 characters, must not contain spaces
 parent_version[parent_abbreviation] | String | Sets parent abbreviation for the parent version (required) <br> Maximum - 10 characters
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -1065,11 +1162,9 @@ This endpoint update the specific details of the requested parent version.
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136"
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 ### Query Parameters
@@ -1077,6 +1172,12 @@ This endpoint update the specific details of the requested parent version.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -1107,11 +1208,13 @@ This endpoint delete the requested parent version.
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/destroy_all`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  },
-  "account": "473995949136",
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
+}
+
+"-> params"
+{
   "ids": [
     100, 200
   ]
@@ -1122,6 +1225,12 @@ This endpoint delete the requested parent version.
 Parameter | Type | Description
 --------- | ------- | -----------
 ids | Array | Ids of parent versions
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
@@ -1154,10 +1263,9 @@ This endpoint delete the requested parent versions.
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/country`
 
 ````json
+"-> auth token to be sent in headers"
 {
-  "detail": {
-    "auth_token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-  }
+  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
 }
 ````
 ### Query Parameters
@@ -1165,6 +1273,12 @@ This endpoint delete the requested parent versions.
 Parameter | Type | Description
 --------- | ------- | -----------
 - | - | -
+
+### Query Headers
+
+Header | Description
+--------- | -----------
+HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
 
 > JSON response format:
 
