@@ -28,6 +28,23 @@ We give you the benefits and services to improve your health and happiness.
 
 <aside class="success">AFFORDABLE WELLBEING BENEFITS – IMPROVING HEALTH, WEALTH AND HAPPINESS</aside>
 
+# Headers Info
+The follwoing headers are <b>required</b> when the requests are called <b>by a signed-in user</b>.
+
+Header | Description
+--------- | -----------
+service_authorization | send cognito_id_token (generated on sign_in request)
+Authorization | send auth_token as the Bearer token
+
+````json
+Header ex -
+{
+"service_authorization": "eyJraWQiOiIzRnlnXC9iRm1MNGE1RDdiRjluTzZQY2NEME1DU3czZVNGUElmSW5xbWN1ND0iLCJhbGciOiJSUzI1NiJ9.QyOGUtYWI0OS02ZTE4MmRiZjZlMmIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21ScL2V1LXdlc3QtMl9pbmxaREZ2UU0iLCJjb2duaXRvOnVzZXJuYW1lIj2oicGFyZW50X2FkbWluX3Rlc3RfMUB5b3BtYWlsLmNvsdbSIsIm9yaWdpbl9qdGkfgiOiI0NzQ1OWVhZC05NjA1LTRkY2EtYjFjMi01MzJjZTQxYjAzOTMiLCJhdWQiOiIxZnZxbm5ka3VzYmdhNWV0YWRlamFpMWxtdCIsImV2ZW50X2lkIjoiZDc0NGNhMj_QtZTJjNy00YmIwLWFiMzctYzBjMTIwNzIwMGY4IiwidG9rZW5fdXNlIjoyhiaWQiLCJhdXRoX3RpbWUiOjE2NzI5MjM4OTgsImV4cCI6MTY3MjkyNzQ5OCwiaWF0IjoxNjcyOTIzODk4LCJqdGkiOiJkZWE5MDA5Mi02ZWRlLTQ4MjctYTg2Ny05MDJhMDIzMmRkYTgiLCJlbWFpbCI6InBhcmVudF9hZG1pbl90ZXN0XzFAeW93wbWFpbC5jb20ifQ.kOhN7HIfQ0NA694zhgYq9oKCu-toC8JrsKdhrrzXBI5RBKwni2dgv9NaaOLrOoPkbAAC07KPtKRlrXV_MOh1_Zxv0gur2XYaCA_YXAxUrylSJIAl19BUYnkuJr1atC1aV3Eube_ED78xbiVkj6qn00ssoY6XGGm_CdMbATX5XTyPrj-eZX9EbXvydtjjLZlwQsuAZnSQtiuG8j42vGG7nTCLKT_svwtASM3f1CzloBIzRnUhyOhRgnIEA5bzv52wQUkvye5r_Zic7hJCZvOqhjyOaV29AimjkeIW7namdMfdjG1BdktLBObiqsJgvSNYxVTNW6VVZddZVuuRWNWbQd7dQ",
+"Authorization": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiM0hBZnFWQjgxU1RjQlVLemVjWlUydyIsImV4cCI6MTY3MjkyNDU5Nn0.C0PfgKdBoMshZee_DNJsY2sO6TpHr-06-cK1CvVzyS-Lx2E6z0I2Ax20tmkz9SI4H_5nDvxNBLuWAb6xjkytobM_ulDlV5XsHtUSsuP3tKdQLnD0NMXw5JBUpshZnXULG03wjz_pTXUuNN4gEZdGcvh6jidJGR7UjRQSeKFxjcOodNhTgkqNUo8Qo9sWVefY4em3RCcJiWoyFQjfnhCC94HLsYO0jTP3WAEfCFYOQtKZ6YEpxT4nC9P69dFjwOQ0UDFroJOHvmM7QJDCUzHsYd7tpipGdu9_b1JqZPno31gutQu7Fa0GE1Kn117Z6d5YH_Aq4zqFihaAGeOwb3tXfA"
+}
+
+````
+
 # Authentication
 ## User Sign-in
 ### HTTP Request
@@ -138,13 +155,6 @@ This endpoint allows patron to sign out.
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
-
 ### Query Parameters
 
 Parameter | Type | Description
@@ -153,9 +163,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -224,13 +232,6 @@ This endpoint shows details of all admin users.
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
-
 ### Query Parameters
 
 Parameter | Type | Description
@@ -239,9 +240,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -284,12 +283,6 @@ This endpoint shows details of the requested admin user.
 `PUT https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "patron": {
     "id": 2,
@@ -311,9 +304,7 @@ patron[phone_number] | Number | Sets phone number for patron
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -355,13 +346,6 @@ This endpoint updates details of the specific admin user.
 
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
-
 ### Query Parameters
 
 Parameter | Type | Description
@@ -370,9 +354,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -402,12 +384,6 @@ This endpoint delete specific admin user.
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/destroy_all`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "ids": [
     100, 200
@@ -423,9 +399,7 @@ ids | Array | IDs of patrons that needs to be deleted
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -454,12 +428,6 @@ This endpoint delete specific admin users.
 `PATCH https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/block`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "ids": [
     100, 200
@@ -477,9 +445,7 @@ blocked | String/Boolean | available options - true, false
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -508,12 +474,6 @@ This endpoint block all specific admin users.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/search`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "patron": {
     "query_string": "test",
@@ -531,9 +491,7 @@ patron[page_no] | Integer | Page number of the paginated serach results <br> (de
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -593,12 +551,6 @@ The query string searches for the particular string in Patron name and email.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/export`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "patron": {
     "export": {
@@ -614,14 +566,11 @@ Parameter | Type | Description
 --------- | ------- | -----------
 export[export_ids] | String | Ids of admin patrons that needs to export <br> (ids are seperated by ,) ex: "100, 200"
 
+If no ids (ie, empty string "") are passed in :export_ids param, all admin users are exported.
+
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
-
-
-If no ids (ie, empty string "") are passed in :export_ids param, all admin users are exported.
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -654,12 +603,6 @@ If the ids mentioned does not exist, it shows error.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/users/invite`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
  "invitation": {
     "first_name": "test",
@@ -685,9 +628,7 @@ invitation[parent_version_id] | Number | Sets parent version for the parent_admi
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -844,12 +785,6 @@ This endpoint allows patron to reset his password, when user is not logged in.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/users/reset_password`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "id": 1
 }
@@ -863,9 +798,7 @@ id | Number | Id of the patron to whom reset password mail is to be sent (requir
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -895,12 +828,6 @@ This endpoint allows admin to send reset password mail to other user.
 `POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "parent_version": {
     "parent_name": "UK",
@@ -926,9 +853,7 @@ parent_version[parent_abbreviation] | String | Sets parent abbreviation for the 
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -956,13 +881,6 @@ This endpoint allows MasterAdmin to create parent versions.
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
-
 ### Query Parameters
 
 Parameter | Type | Description
@@ -971,9 +889,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -1029,13 +945,6 @@ This endpoint shows the list of all parent versions.
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
-
 ### Query Parameters
 
 Parameter | Type | Description
@@ -1044,9 +953,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -1090,12 +997,6 @@ This endpoint shows the details of the requested parent version.
 `PUT https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "parent_version": {
     "parent_name": "United Kingdom",
@@ -1116,9 +1017,7 @@ parent_version[parent_abbreviation] | String | Sets parent abbreviation for the 
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -1161,12 +1060,6 @@ This endpoint update the specific details of the requested parent version.
 
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
 ### Query Parameters
 
 Parameter | Type | Description
@@ -1175,9 +1068,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -1208,12 +1099,6 @@ This endpoint delete the requested parent version.
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/destroy_all`
 
 ````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-
-"-> params"
 {
   "ids": [
     100, 200
@@ -1228,9 +1113,7 @@ ids | Array | Ids of parent versions
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
@@ -1262,12 +1145,6 @@ This endpoint delete the requested parent versions.
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/country`
 
-````json
-"-> auth token to be sent in headers"
-{
-  "HTTP_SERVICE_AUTHORIZATION": "Bearer eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiZVgwNWxobW12cVRZSVhsS1UtXzFXQSIsImV4cCI6MTY3Mjk3ODExMn0.fOD6xzxLfqEOPBGE4m4VV_C0z1ypudOS4sTgILVwiT-gfia9pBYWAsKo6DuiekMUDMLl8c5wHUk0i2Xpp76clR0WImE0hm7e1cr2f1eS9XbtCcudUqtTsjSPbSDWyh8VuQ3Sw7aZCoziT71WErZDd02hHQngdvehhE3jgoNag-JbnHrdQmhl76HdpMq3FLWqXVWwBLBtXANjMUPRl4FLLwD3_MdaZfCe55_nwGQqJdveFCoRmrBmJfkUpLGW45lebeZOsyx27O96ffIySUQK3kDvp3F0ncuYOgMjZ8ggEzUhggrlu3Coc2Eg_9byLEdIcERD-0hTI7Q74WcgNlLZjQ"
-}
-````
 ### Query Parameters
 
 Parameter | Type | Description
@@ -1276,9 +1153,7 @@ Parameter | Type | Description
 
 ### Query Headers
 
-Header | Description
---------- | -----------
-HTTP_SERVICE_AUTHORIZATION | value like -> "Bearer <i><b>auth_token</b></i>"
+Required Headers -> service_authorization, Authorization
 
 > JSON response format:
 
