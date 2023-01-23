@@ -47,6 +47,8 @@ Header ex -
 
 # Authentication
 ## User Sign-in
+This endpoint allows patron to sign in.
+
 ### HTTP Request
 > JSON request format:
 
@@ -107,9 +109,9 @@ remember_me | String/Boolean | values in true, false (required)
 
 ```
 
-This endpoint allows patron to sign in.
-
 ## User Sign out
+This endpoint allows patron to sign out.
+
 ### HTTP Request
 > JSON request format:
 
@@ -145,11 +147,10 @@ token | String | unique token of user (required)
 }
 ```
 
-This endpoint allows patron to sign out.
-
-
 # Patrons
 ## Show All Patrons
+This endpoint shows details of all admin users.
+
 ### HTTP Request
 > JSON request format:
 
@@ -224,9 +225,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint shows details of all admin users.
-
 ## Show Specific Patron
+This endpoint shows details of the requested admin user.
+
 ### HTTP Request
 > JSON request format:
 
@@ -274,9 +275,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint shows details of the requested admin user.
-
 ## Update Specific Patron
+This endpoint updates details of the specific admin user.
+
 ### HTTP Request
 > JSON request format:
 
@@ -338,9 +339,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint updates details of the specific admin user.
-
 ## Delete Specific Patron
+This endpoint delete specific admin user.
+
 ### HTTP Request
 > JSON request format:
 
@@ -375,9 +376,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint delete specific admin user.
-
 ## Delete Specific Patrons
+This endpoint delete specific admin users.
+
 ### HTTP Request
 > JSON request format:
 
@@ -419,9 +420,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint delete specific admin users.
-
 ## Block Specific Patrons
+This endpoint block all specific admin users.
+
 ### HTTP Request
 > JSON request format:
 
@@ -465,9 +466,10 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint block all specific admin users.
-
 ## Search Patrons
+This endpoint allows user to search admin users on the basis of a query string. <br>
+The query string searches for the particular string in Patron name and email.
+
 ### HTTP Request
 > JSON request format:
 
@@ -541,10 +543,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint allows user to search admin users on the basis of a query string. <br>
-The query string searches for the particular string in Patron name and email.
-
 ## Export Patrons
+This endpoint allows user to export details of users.
+
 ### HTTP Request
 > JSON request format:
 
@@ -567,6 +568,8 @@ Parameter | Type | Description
 export[export_ids] | String | Ids of admin patrons that needs to export <br> (ids are seperated by ,) ex: "100, 200"
 
 If no ids (ie, empty string "") are passed in :export_ids param, all admin users are exported.
+If :export_ids contain ids (muliple ids separated by comma), all patrons data of the specified patron ids are exported.
+If the ids mentioned does not exist, it returns error message.
 
 ### Query Headers
 
@@ -591,12 +594,10 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint allows user to export details of users. <br>
-If export_ids does not contain ids, ie pass empty string "", it exports all patrons data.
-If export_ids contain ids (muliple ids separated by comma), it exports patrons data of the specified patron ids.
-If the ids mentioned does not exist, it shows error.
-
 ## Invite Other Patron
+This endpoint allows patron to invite other users. <br>
+(Currently MasterAdmin can invite either MasterAdmin or ParentAdmin)
+
 ### HTTP Request
 > JSON request format:
 
@@ -648,10 +649,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint allows patron to invite other users. <br>
-(Currently MasterAdmin can invite either MasterAdmin or ParentAdmin)
-
 ## User Invitation Confirmation
+This endpoint allows patron to confirm his account.
+
 ### HTTP Request
 > JSON request format:
 
@@ -696,9 +696,9 @@ user[token] | String | unique verification token of patron (required)
 }
 ```
 
-This endpoint allows patron to confirm his account.
-
 ## User Forgot Password
+This endpoint allows patron to send reset password mail.
+
 ### HTTP Request
 > JSON request format:
 
@@ -734,9 +734,9 @@ email | String | Email of patron (required)
 }
 ```
 
-This endpoint allows patron to send reset password mail.
-
 ## User Reset Password (When User Sets His Password Via Forgot Password Mail)
+This endpoint allows patron to reset his password, when user is not logged in.
+
 ### HTTP Request
 > JSON request format:
 
@@ -776,9 +776,9 @@ reset_password_token | String | Unique reset password token (required)
 }
 ```
 
-This endpoint allows patron to reset his password, when user is not logged in.
-
 ## User Reset Password (When Admin Sends Reset Password Mail For Other User)
+This endpoint allows admin to send reset password mail to other user.
+
 ### HTTP Request
 > JSON request format:
 
@@ -818,10 +818,10 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint allows admin to send reset password mail to other user.
-
 # Parent Versions
 ## Create Parent Versions
+This endpoint allows MasterAdmin to create parent versions.
+
 ### HTTP Request
 > JSON request format:
 
@@ -873,9 +873,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint allows MasterAdmin to create parent versions.
-
 ## Get All Parent Versions
+This endpoint shows the list of all parent versions.
+
 ### HTTP Request
 > JSON request format:
 
@@ -937,9 +937,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint shows the list of all parent versions.
-
 ## Get Specific Parent Version
+This endpoint shows the details of the requested parent version.
+
 ### HTTP Request
 > JSON request format:
 
@@ -988,9 +988,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint shows the details of the requested parent version.
-
 ## Update Specific Parent Version
+This endpoint allows to update the specific details of the requested parent version.
+
 ### HTTP Request
 > JSON request format:
 
@@ -1052,9 +1052,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint update the specific details of the requested parent version.
-
 ## Delete Specific Parent Version
+This endpoint is used for deleting the requested parent version.
+
 ### HTTP Request
 > JSON request format:
 
@@ -1090,9 +1090,9 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint delete the requested parent version.
-
 ## Delete Specific Parent Versions
+This endpoint delete the requested parent versions.
+
 ### HTTP Request
 > JSON request format:
 
@@ -1134,11 +1134,10 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
-This endpoint delete the requested parent versions.
-
 
 # Country
 ## Show All Countries
+This endpoint shows all country details.
 
 ### HTTP Request
 > JSON request format:
@@ -1195,5 +1194,3 @@ Required Headers -> service_authorization, Authorization
   "message": "No countries listed yet"
 }
 ```
-
-This endpoint shows all country details.
