@@ -235,7 +235,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint shows details of the requested admin user.
 
 ### HTTP Request
-> JSON request format:
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
@@ -349,7 +348,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint delete specific admin user.
 
 ### HTTP Request
-> JSON request format:
 
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons/:id`
 
@@ -550,7 +548,7 @@ Required Headers -> service_authorization, Authorization
 ```
 
 ## Export Patrons
-This endpoint allows user to export details of users.
+This endpoint allows us to export details of users.
 
 ### HTTP Request
 > JSON request format:
@@ -883,7 +881,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint shows the list of all parent versions.
 
 ### HTTP Request
-> JSON request format:
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions`
 
@@ -947,7 +944,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint shows the details of the requested parent version.
 
 ### HTTP Request
-> JSON request format:
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
@@ -998,7 +994,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint allows to update the specific details of the requested parent version.
 
 ### HTTP Request
-> JSON request format:
 
 `PUT https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
@@ -1062,7 +1057,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint is used for deleting the requested parent version.
 
 ### HTTP Request
-> JSON request format:
 
 `DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/parent_versions/:id`
 
@@ -1146,7 +1140,6 @@ Required Headers -> service_authorization, Authorization
 This endpoint shows all country details.
 
 ### HTTP Request
-> JSON request format:
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/country`
 
