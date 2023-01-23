@@ -156,11 +156,17 @@ This endpoint shows details of all admin users.
 
 `GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/patrons`
 
+````json
+{
+  "page_no": 1
+}
+````
+
 ### Query Parameters
 
 Parameter | Type | Description
 --------- | ------- | -----------
-- | - | -
+page_no | Number | default - 1
 
 ### Query Headers
 
