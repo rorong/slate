@@ -158,7 +158,8 @@ This endpoint shows details of all admin users.
 
 ````json
 {
-  "page_no": 1
+  "page_no": 1,
+  "items_per_page": 20
 }
 ````
 
@@ -167,6 +168,7 @@ This endpoint shows details of all admin users.
 Parameter | Type | Description
 --------- | ------- | -----------
 page_no | Number | default - 1
+items_per_page | Number | default - 10
 
 ### Query Headers
 
@@ -819,6 +821,85 @@ Required Headers -> service_authorization, Authorization
   "status": 400,
   "success": false,
   "message": "User not found."
+}
+```
+
+## Find Patron By Invitation Token
+This endpoint returns user data using the invitation token.
+
+### HTTP Request
+
+`GET https://auth-app-lb-870023433.eu-west-2.elb.amazonaws.com/api/v1/users/get_user`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+token | String | Invitation token of a user (required)
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "",
+  "data": {
+    "first_name": "patron",
+    "last_name": "test",
+    "email": "patron_test@gmail.com"
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "User not found"
+}
+```
+
+## Find Patron By JWT Token
+This endpoint returns user data using the JWT token.
+
+### HTTP Request
+
+`GET https://auth-app-lb-870023433.eu-west-2.elb.amazonaws.com/api/v1/users/get_jwt_user`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+token | String | JWT token of a user (required)
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "User data fetched successfully",
+  "user": {
+    "data": {
+      "id": "1",
+      "type": "patron",
+      "attributes": {
+        "email": "master_admin@gmail.com",
+        "first_name": "master",
+        "last_name": "admin",
+        "type": "MasterAdmin"
+      }
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "User not found"
 }
 ```
 
