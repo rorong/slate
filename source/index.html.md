@@ -33,8 +33,8 @@ The follwoing headers are <b>required</b> when the requests are called <b>by a s
 
 Header | Description
 --------- | -----------
-service_authorization | send cognito_id_token (generated on sign_in request)
-Authorization | send auth_token as the Bearer token
+Authorization | send cognito_id_token (generated on sign_in request)
+service_authorization | send auth_token as the Bearer token
 
 ````json
 Header ex -
