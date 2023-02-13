@@ -655,6 +655,51 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
+## Resend Invitation
+This endpoint allows patron to resend invitation link to other user.
+(Currently MasterAdmin can invite either MasterAdmin or ParentAdmin)
+
+Note: User cannot send resend-invitation-link to self.
+
+### HTTP Request
+> JSON request format:
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/users/resend_invitation`
+
+````json
+{
+ "id": 100
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Integer/String | Patron id (required)
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Invitation resend successfully"
+}
+
+// Example of failure response
+{
+  "status": 400,
+  "success": false,
+  "message": "Cannot send invitation to self"
+}
+```
+
 ## User Invitation Confirmation
 This endpoint allows patron to confirm his account.
 
