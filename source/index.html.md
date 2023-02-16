@@ -108,6 +108,48 @@ remember_me | String/Boolean | values in true, false (required)
 }
 
 ```
+## User Refresh Id Token
+This endpoint allows patron to refresh cognito id token.
+
+Cognito Id token maximum expiration limit is 1 day.
+If user has set for remember me for 2 weeks, then, id token needs to be refreshed every day.
+
+### HTTP Request
+> JSON request format:
+
+`POST https://auth-app-lb-870023433.eu-west-2.elb.amazonaws.com/api/v1/users/refresh_token`
+
+````json
+{
+  "refresh_token": "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAifQ.RyUVlFR24-IgBFQHdAqEy3ColyYkkap0e0dRe9CM8Qm-3_cXiRnUPF7WxNtaVStAeGZOK7mnJ53Riztu9ui1iNcNTHOUo3rv6NHz9b7AW-gQdWoAFTYKI-nVAnhVN2TpcWD5gB_TuDJX0uRSD3ZHPQPL2XNzeMXkYtboEpkqJJ0y5dA4ftVl8iS3jAUkK2CgBaHdIEN5rRPoL2YVnTiz7YOh85lXUIMr97RB32QqfNjH7Ezw_bSaLwAx7uFD7lpzZrO7SxunLXf5i_q5UCvAIN6QlSE5oH6URrFXUA4w5ai60pYrcjnTiqVF43Jl_i5oVhjda7DyE3HRf1ByKYwzrA.JcvOXqMzaC-wnFui.Rn61lKmqh7PLuNfBfGr4XwAt1YJ9OB-xyohLZhaQbkvfRyxrRW58We3oDqoBU3fdCeUwTk_f3OTj0me3d6lberrh1dAvThb4N6BSlZnuH9JG51_KZBcvB3nlcTz3SFYa2Jxc2JJ_xn3PJ08kNr-Y5UE8pfLw7SmTguxzcl8LhGM7ZTeq5ZIzNoPYMSwezl3SUOcGKbrWmVq3rgtipiVjYN8Y4uV_yGgDhdGANs7tRi7llcGQa6Uh2lmKn_YTYuU7xQswoZjH3B5gxdafOqX3om676rvDw0ewUcxWnV4v199PvE0CMpaytCQ8m4rZE4MlpI2sEfGSx_PY6qJHbuciH45GiCwkTvwJdYALxUgZP3vLo3PdQLvNSO9KYyQrudbxQJXX9zo9R1Hx8hNBUV7cC2U4dPntLnQ0zthxjenH_gqNwabbbrkNlIlrCqBRGohuC1bfVUtU9qfqb7shR8OiNf1YJZXXWgx5ppswbhQap8jdyglh-mE_JlG6DtL7ljEbSxecYLqIU02fnpuJsTWnSSoVPAGxy8fBTA1dzGcxuI2irBVIkpti_DsRZw5QQSy_ucua4h2AMJ7jrHwzBLT71Y9PH2Krqq1UU8w0arx7UiIu4dN4zi0dM6IO3wVNs6NKkbvkLbZwO4gDiKlwf0kQkPW8jLOsYh4cTxCpYPtFjUlxoR1y2R1hwUxFxv-fbajEhd-cW1ZCBAoIq07S3m92dqu-OAjJ8L83GH8yIIZy0UfiAryLN8crdI5cqdxBwjZ3I5RjbWKG5MhfbXug1lcoOlmrBjfi2jjizfR03Wss5BleqjfeWt2T_Hk33xBHe2O74dK-z-W7oZ1FZPJIZvZmfptqYVT0Tk99Lu_aKNlC1q8WKk62R2FgOd2MWqM7LdAHeLcQscOCWRVA8Xszg6QD2jE7ghe9WHMvoCR_3avl7VT9HpwBWX9O7YnZ61OgBs8NT0S7GTa3KJvw62ORU3RWFkxz9tLMcgZSr4VEKPWL4ya7ZPlu6WHe2rC_fERHciP6qyX10YhtFWesNiozEm27C0UYXbVo9zsNQve8-4rGrXVoRAjqul5RBY97LPLpGqIc4vqDeg97Y4xapHeqbaBRPYi1_eL-HvLGWJQGOd_ZiriXih0SliU0z9DZbPDbC7wC9j1P-c14WOWD7pBX4--GLxLXinkSVEkyULywnFVehiqSqKItLzZB8xbdhZXjAx7IVJGMTr-rb87KDipVto9DbtXLB_txXC1XhM-cFT4nPhzMFmQiKpzqy4bVxiIa9gqcdnoW192ZRXjnUyIkl737mH8hKhN_OHe9nhZ3ZkoBdczGa9Y.5rCC4tmU--AoLVjxmj_ulg"
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+refresh_token | String | cognito refresh token shared at the time of user sign in(required)
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Id token regenerated successfully",
+  "cognito_id_token": "eyJraWQiOiIzRnlnXC9iRm1MNGE1RDdiRjluTzZQY2NEME1DU3czZVNGUElmSW5xbWN1ND0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiMDcyYTE0ZC02YmVjLTRmNDAtOTUwYy03M2QxMzQyNmIyYjUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9pbmxaREZ2UU0iLCJjb2duaXRvOnVzZXJuYW1lIjoic2FuZGVlcC5rdW1hciswMDFAb25ncmFwaC5jb20iLCJvcmlnaW5fanRpIjoiNTdjMThhOTMtZTc3MC00ZDk1LWJhZTUtOTAxMTkwOTFkOTM3IiwiYXVkIjoiMWZ2cW5uZGt1c2JnYTVldGFkZWphaTFsbXQiLCJldmVudF9pZCI6ImM2ZDMyMzM2LTMwNGEtNDU1NC05YzdmLWFkYTljODNkYjU1ZSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjc2NDM4NDEyLCJleHAiOjE2NzY1MjY1MDksImlhdCI6MTY3NjUyNjIwOSwianRpIjoiZTk1NDI2ZjQtNDg4Ni00NjQ1LWE1MTctMzZiZmM0ZjQ1ZGQyIiwiZW1haWwiOiJzYW5kZWVwLmt1bWFyKzAwMUBvbmdyYXBoLmNvbSJ9.f_P_0foejFiqZcSTg9ZvxhduM_TIcugDJNEajRcBuX1ytR6kCTgCq01VuyZGR-jKqyTvVoEbWq09A8iCkUorAgvgEka2HgWC8KeiDnfrG6hJdOZtYkDqX48Tvomn8_1h8ATu1DeizcFBUPUstAKWX8LhjUWLKbCHe30S1Xqi9djKzR1HS-womJ_VHe-UiQu3r0sE3kJHqyaXF67-F1gDN2bZdKAzKZ8gAEaj5E1yetd55bKmu_Gpvu-mRjzvLqDaPEbks7evr9PSqxiThw96meohuU4RhPCfBe6J1cSM2eNCI5JVD5hA-rCaQ4lW3lI_3TmjO9eeK7CUy2i6kEIlAQ"
+}
+
+// Example of failure response
+{
+  "status": 400,
+  "success": false,
+  "message": "Refresh token is missing"
+}
+
+```
 
 ## User Sign out
 This endpoint allows patron to sign out.
@@ -137,6 +179,43 @@ token | String | unique token of user (required)
   "status": 200,
   "success": true,
   "message": "User signout successfully"
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "User not found"
+}
+```
+## User Sign Out Of All Sessions
+This endpoint allows patron to sign out of all sessions.
+
+### HTTP Request
+> JSON request format:
+
+`DELETE https://auth-app-lb-870023433.eu-west-2.elb.amazonaws.com/api/v1/users/sign_out_of_all_sessions`
+
+````json
+{
+  "id": 100
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+id | Integer | Patron id (required)
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "User signout successfully from all sessions"
 }
 
 // Example of failure response
