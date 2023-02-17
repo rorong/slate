@@ -916,7 +916,7 @@ This endpoint allows admin to send reset password mail to other user.
 
 ````json
 {
-  "id": 1
+  "ids": [1, 2]
 }
 ````
 
@@ -924,7 +924,7 @@ This endpoint allows admin to send reset password mail to other user.
 
 Parameter | Type | Description
 --------- | ------- | -----------
-id | Number | Id of the patron to whom reset password mail is to be sent (required)
+ids | Array | Ids of the patron to whom reset password mail is to be sent (required) <br> Should not contain the id of the signed in user
 
 ### Query Headers
 
