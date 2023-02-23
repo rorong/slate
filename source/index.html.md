@@ -58,7 +58,8 @@ This endpoint allows patron to sign in.
 {
   "email": "test@pirkx.com",
   "password": "Welcome@123",
-  "remember_me": true
+  "remember_me": true,
+  "browser_detail": "browser_id"
 }
 ````
 
@@ -68,7 +69,8 @@ Parameter | Type | Description
 --------- | ------- | -----------
 email | String | (required)
 password | String | (required)
-remember_me | String/Boolean | values in true, false (required)
+remember_me | String/Boolean | values in true/false (default - false)
+browser_detail | String | browser id (required)
 
 > JSON response format:
 
@@ -97,7 +99,8 @@ remember_me | String/Boolean | values in true, false (required)
       ]
   },
   "token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoqWlU2dGJ2M1RSWThDNWRXJUQSIsImV4cCI6MTY3MjkyNzQ5OH0.iia28wdprwj-ow0_qoR5GMRGeUkyg-ca6GKzMNXdswehgW2iBYfCLRQU5ll5i9A_qfGsWWXudMROCRMjP-fSzuoy6Nu_G4b0YOyybzHBV3wgUdUJxU5XAiwJoxeYbJmJda_604mSKMs-2XomPt_n6Qo8frqKUYWQvi4b0C9iLJBO_ZxkrZDQSdUME4D0tiQ7kMNJX6j7bpJd7QcZ0iN1wtVPzWVtomsyrrFIVrlFkb2CRGod-ogmYc7oIOK7Zk1xJhC4OWMyKvUA0hAYeMND8n5h3Rl8NPxpjGeyKv0KKx04IfvIq41pYMbhAQB4tG-_oSsOnsh7Sgabzz1FUyt5MbZ7Vbdw",
-  "cognito_id_token": "eyJraWQiOiIzRnlnXC9iRm1MNGE1RDdiRjluTzZQY2NEME1DU3czZVNGUElmSW5xbWN1ND0iLCJhbGciOiJSUzI1NiJ9.QyOGUtYWI0OS02ZTE4MmRiZjZlMmIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21ScL2V1LXdlc3QtMl9pbmxaREZ2UU0iLCJjb2duaXRvOnVzZXJuYW1lIj2oicGFyZW50X2FkbWluX3Rlc3RfMUB5b3BtYWlsLmNvsdbSIsIm9yaWdpbl9qdGkfgiOiI0NzQ1OWVhZC05NjA1LTRkY2EtYjFjMi01MzJjZTQxYjAzOTMiLCJhdWQiOiIxZnZxbm5ka3VzYmdhNWV0YWRlamFpMWxtdCIsImV2ZW50X2lkIjoiZDc0NGNhMj_QtZTJjNy00YmIwLWFiMzctYzBjMTIwNzIwMGY4IiwidG9rZW5fdXNlIjoyhiaWQiLCJhdXRoX3RpbWUiOjE2NzI5MjM4OTgsImV4cCI6MTY3MjkyNzQ5OCwiaWF0IjoxNjcyOTIzODk4LCJqdGkiOiJkZWE5MDA5Mi02ZWRlLTQ4MjctYTg2Ny05MDJhMDIzMmRkYTgiLCJlbWFpbCI6InBhcmVudF9hZG1pbl90ZXN0XzFAeW93wbWFpbC5jb20ifQ.kOhN7HIfQ0NA694zhgYq9oKCu-toC8JrsKdhrrzXBI5RBKwni2dgv9NaaOLrOoPkbAAC07KPtKRlrXV_MOh1_Zxv0gur2XYaCA_YXAxUrylSJIAl19BUYnkuJr1atC1aV3Eube_ED78xbiVkj6qn00ssoY6XGGm_CdMbATX5XTyPrj-eZX9EbXvydtjjLZlwQsuAZnSQtiuG8j42vGG7nTCLKT_svwtASM3f1CzloBIzRnUhyOhRgnIEA5bzv52wQUkvye5r_Zic7hJCZvOqhjyOaV29AimjkeIW7namdMfdjG1BdktLBObiqsJgvSNYxVTNW6VVZddZVuuRWNWbQd7dQ"
+  "cognito_id_token": "eyJraWQiOiIzRnlnXC9iRm1MNGE1RDdiRjluTzZQY2NEME1DU3czZVNGUElmSW5xbWN1ND0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiMDcyYTE0ZC02YmVjLTRmNDAtOTUwYy03M2QxMzQyNmIyYjUiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9pbmxaREZ2UU0iLCJjb2duaXRvOnVzZXJuYW1lIjoic2FuZGVlcC5rdW1hciswMDFAb25ncmFwaC5jb20iLCJvcmlnaW5fanRpIjoiNTdjMThhOTMtZTc3MC00ZDk1LWJhZTUtOTAxMTkwOTFkOTM3IiwiYXVkIjoiMWZ2cW5uZGt1c2JnYTVldGFkZWphaTFsbXQiLCJldmVudF9pZCI6ImM2ZDMyMzM2LTMwNGEtNDU1NC05YzdmLWFkYTljODNkYjU1ZSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjc2NDM4NDEyLCJleHAiOjE2NzY1MjY1MDksImlhdCI6MTY3NjUyNjIwOSwianRpIjoiZTk1NDI2ZjQtNDg4Ni00NjQ1LWE1MTctMzZiZmM0ZjQ1ZGQyIiwiZW1haWwiOiJzYW5kZWVwLmt1bWFyKzAwMUBvbmdyYXBoLmNvbSJ9.f_P_0foejFiqZcSTg9ZvxhduM_TIcugDJNEajRcBuX1ytR6kCTgCq01VuyZGR-jKqyTvVoEbWq09A8iCkUorAgvgEka2HgWC8KeiDnfrG6hJdOZtYkDqX48Tvomn8_1h8ATu1DeizcFBUPUstAKWX8LhjUWLKbCHe30S1Xqi9djKzR1HS-womJ_VHe-UiQu3r0sE3kJHqyaXF67-F1gDN2bZdKAzKZ8gAEaj5E1yetd55bKmu_Gpvu-mRjzvLqDaPEbks7evr9PSqxiThw96meohuU4RhPCfBe6J1cSM2eNCI5JVD5hA-rCaQ4lW3lI_3TmjO9eeK7CUy2i6kEIlAQ",
+  "cognito_refresh_token": "eyJraWQiOiIzRnlnXC9iRm1MNGE1RDdiRjluTzZQY2NEME1DU3czZVNGUElmSW5xbWN1ND0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJiMDcyYTE0ZC02YmVjLTRmNDAtOTUwYy03M2QxMzQyNmIyYjUiLCJpcwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9pbmxaREZ2UU0iLCJjb2duaXRvOnVzZXJuYW1lIjoic2FuZGVlcC5rdW1hciswMDFAb25ncmFwaC5jb20iLCJvcmljoiNTdjMThhOTMtZTc3MC00ZDk1LWJhZTUtOTAxMTkwOTFkOTM3IiwiYXVkIjoiMWZ2cW5uZGt1c2JnYTVldGFkZWphaTFsbXQiLerggy56fhCJldmVudF9pZCI6ImM2ZDMyMzM2LTMwNGEtNDU1NC05YzdmLWFkYTljODNkYjU1ZSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjLCJleHAiOjE2NzY1MjY1MDksImlhdCI6MTY3NjUyNjIwOSwianRpIjoiZTk1NDI2ZjQtNDg4Ni00NjQ1LWE1MTctMzZiZmM0ZjQ1ZGse23QyIiwiZW1haWwiOiJzYW5kZWVwLmt1bWFyKzAwMUBvbmdyYXBoLmNvbSJ9.f_P_0foejFiqZcSTg9ZvxhduM_TIcugDJNEajRcBuX1ghhyy545ytR6kCTgCq01VuyZGR-jKqyTvVoEbWq09A8iCkUorAgvgEka2HgWC8KeiDnfrG6hJdOZtYkDqX48Tvomn8_1h8ATu1DeizcFBUPUstAKWX8LhjUWLKbCHe30S1Xqi9djKzR1HS-womJ_VHe-UiQu3r0sE3kJHqyaXF67-F1gDN2bZdKAzKZ8gAEaj5E1yetd55bKmu_Gpvu-mRjzvLqDaPEbks7evr9PSqxiThw96meohuU4RhPCfBe6J1cSM2eNCI5JVD5hA-rCaQ4lW3lI_3TmjO9eeK7CUy2i6kEIlAQ"
 }
 
 // Example of failure response
@@ -161,7 +164,8 @@ This endpoint allows patron to sign out.
 
 ````json
 {
-  "token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiM0hBZnFWQjgxU1RjQlVLemVjWlUydyIsImV4cCI6MTY3MjkyNDU5Nn0.C0PfgKdBoMshZee_DNJsY2sO6TpHr-06-cK1CvVzyS-Lx2E6z0I2Ax20tmkz9SI4H_5nDvxNBLuWAb6xjkytobM_ulDlV5XsHtUSsuP3tKdQLnD0NMXw5JBUpshZnXULG03wjz_pTXUuNN4gEZdGcvh6jidJGR7UjRQSeKFxjcOodNhTgkqNUo8Qo9sWVefY4em3RCcJiWoyFQjfnhCC94HLsYO0jTP3WAEfCFYOQtKZ6YEpxT4nC9P69dFjwOQ0UDFroJOHvmM7QJDCUzHsYd7tpipGdu9_b1JqZPno31gutQu7Fa0GE1Kn117Z6d5YH_Aq4zqFihaAGeOwb3tXfA"
+  "token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiM0hBZnFWQjgxU1RjQlVLemVjWlUydyIsImV4cCI6MTY3MjkyNDU5Nn0.C0PfgKdBoMshZee_DNJsY2sO6TpHr-06-cK1CvVzyS-Lx2E6z0I2Ax20tmkz9SI4H_5nDvxNBLuWAb6xjkytobM_ulDlV5XsHtUSsuP3tKdQLnD0NMXw5JBUpshZnXULG03wjz_pTXUuNN4gEZdGcvh6jidJGR7UjRQSeKFxjcOodNhTgkqNUo8Qo9sWVefY4em3RCcJiWoyFQjfnhCC94HLsYO0jTP3WAEfCFYOQtKZ6YEpxT4nC9P69dFjwOQ0UDFroJOHvmM7QJDCUzHsYd7tpipGdu9_b1JqZPno31gutQu7Fa0GE1Kn117Z6d5YH_Aq4zqFihaAGeOwb3tXfA",
+  "browser_detail": "browser_id"
 }
 ````
 
@@ -224,6 +228,55 @@ id | Integer | Patron id (required)
   "success": false,
   "message": "User not found"
 }
+```
+
+## User Check MFA Detail
+This endpoint allows to check if mfa details for a patron is present or not.
+If present, it also checks if it's expired or not.
+
+### HTTP Request
+> JSON request format:
+
+`POST https://auth-app-lb-870023433.eu-west-2.elb.amazonaws.com/api/v1/users/check_mfa_expiration`
+
+````json
+{
+  "email": "test@pirkx.com",
+  "browser_detail": "browser_id"
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+email | String | (required)
+browser_detail | String | browser id (required)
+
+> JSON response format:
+
+```json
+
+// Examples of success responses
+{
+  "status": 200,
+  "success": true,
+  "message": "Mfa already set up"
+}
+
+{
+  "status": 200,
+  "success": true,
+  "message": "Mfa set up expired, need to be set up again"
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "User is not present with this email"
+}
+
 ```
 
 # Patrons
