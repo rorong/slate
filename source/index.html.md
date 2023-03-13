@@ -1392,6 +1392,688 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
+# Child Versions With Address & Pricing
+
+## Create/Update Child Address Detail
+This endpoint allows Parent Admin to create/update the address details for child.
+
+### HTTP Request
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/address_details`
+
+````json
+// FOR CREATING NEW ADDRESS
+{
+  "address_detail": {
+    "child_name": "pirkx",
+    "registered_name": "pirkx ltd",
+    "address_line1": "address1",
+    "city": "qwerty",
+    "postcode": "123456"
+  }
+}
+
+// FOR UPDATING NEW ADDRESS
+{
+  "address_detail": {
+    "id": 1,
+    "child_name": "pirkx",
+    "registered_name": "pirkx ltd",
+    "address_line1": "address1",
+    "city": "qwerty",
+    "postcode": "123456"
+  }
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+address_detail[:id] | Integer | Id of Child Address Detail to update
+address_detail[:child_name] | String | Child name (required)
+address_detail[:registered_name] | String | Registered name of Child (required)
+address_detail[:address_line1] | String | Address of Child - line 1 (required)
+address_detail[:address_line2] | String | Address of Child - line 2
+address_detail[:address_line3] | String | Address of Child - line 3
+address_detail[:city] | String | City of the address of Child (required)
+address_detail[:postcode] | String | Postcode of the address of Child (required)
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// FOR CREATION --
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child Address created successfully",
+  "data": {
+    "id": "1",
+    "type": "address_detail",
+    "attributes": {
+      "id": 1,
+      "child_name": "pirkx",
+      "registered_name": "pirkx ltd",
+      "address_line1": "address1",
+      "address_line2": null,
+      "address_line3": null,
+      "city": "qwerty",
+      "postcode": "12345"
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 422,
+  "success": false,
+  "message": "Child name has already been taken"
+}
+
+// FOR UPDATION --
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child Address updated successfully",
+  "data": {
+    "id": "1",
+    "type": "address_detail",
+    "attributes": {
+      "id": 1,
+      "child_name": "pirkx",
+      "registered_name": "pirkx ltd",
+      "address_line1": "address1",
+      "address_line2": null,
+      "address_line3": null,
+      "city": "qwerty",
+      "postcode": "12345"
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child address listed with id 1"
+}
+```
+
+## Show Specific Child Address Detail
+This endpoint allows Parent Admin to get the address detail for a child.
+
+### HTTP Request
+
+`GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/address_details/:id`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "data": {
+    "id": "1",
+    "type": "address_detail",
+    "attributes": {
+      "id": 1,
+      "child_name": "pirkx",
+      "registered_name": "pirkx ltd",
+      "address_line1": "address",
+      "address_line2": "address 2",
+      "address_line3": null,
+      "city": "qwerty",
+      "postcode": "123456"
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child address listed with id 3"
+}
+```
+
+## Delete Specific Child Address Detail
+This endpoint allows Parent Admin to delete the address detail for a child.
+
+### HTTP Request
+
+`DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/address_details/:id`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child deleted successfully"
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child address listed with id 10"
+}
+```
+
+## Get All Child Versions Details With Pricing
+This endpoint shows the list of all child versions with pricing detail.
+
+### HTTP Request
+
+`GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "data": [
+    {
+      "id": "1",
+      "type": "child_version",
+      "attributes": {
+        "id": 1,
+        "subdomain": "capita",
+        "is_primary": false,
+        "allow_sso": true,
+        "google_analytics_code": null,
+        "status": "deleted",
+        "child_name": "pirkx",
+        "description": "child_version",
+        "parent_admin": null,
+        "monthly_pricing": null,
+        "gift_card": null,
+        "is_bolt_on": null,
+        "live_members": null
+      }
+    },
+    {
+      "id": "2",
+      "type": "child_version",
+      "attributes": {
+        "id": 2,
+        "subdomain": "capita",
+        "is_primary": true,
+        "allow_sso": true,
+        "google_analytics_code": null,
+        "status": "live",
+        "child_name": "pirkx 1",
+        "description": "default",
+        "parent_admin": null,
+        "monthly_pricing": "10.0",
+        "gift_card": null,
+        "is_bolt_on": false,
+        "live_members": null
+      }
+    }
+  ],
+  "total_page_count": 1
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version found. Please create a child version."
+}
+```
+
+## Get Specific Child Version
+This endpoint shows the details of the requested child version.
+
+### HTTP Request
+
+`GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/:id`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+"ex URL -> 'GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/1'"
+
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "data": {
+    "id": "1",
+    "type": "child_version",
+    "attributes": {
+      "id": 1,
+      "subdomain": "capita",
+      "is_primary": true,
+      "allow_sso": true,
+      "google_analytics_code": null,
+      "status": "live"
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version listed with id 1"
+}
+```
+
+## Create/Update Child Version
+This endpoint allows Parent Admin to create/update the child version.
+
+### HTTP Request
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions`
+
+````json
+// FOR CREATING NEW CHILD VERSION
+{
+  "child_version": {
+    "subdomain": "capita",
+    "address_detail_id": 1,
+    "is_primary": false,
+    "allow_sso": true
+  }
+}
+
+// FOR UPDATING NEW CHILD VERSION
+{
+  "child_version": {
+    "id": 1,
+    "subdomain": "capita",
+    "is_primary": false,
+    "allow_sso": true
+  }
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+child_version[:id] | Integer | Id of Child Version to update
+child_version[:address_detail_id] | Integer | Id of corresponsing address detail required on creation
+child_version[:subdomain] | String | Subdomain for child (required)
+child_version[:is_primary] | Boolean | Sets if child is primary/secondary (required)
+child_version[:allow_sso] | Boolean | Sets if sso is allowed for the child
+child_version[:google_analytics_code] | String | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// FOR CREATION --
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child Version created successfully",
+  "data": {
+    "id": "1",
+    "type": "child_version",
+    "attributes": {
+      "id": 1,
+      "subdomain": "capita new",
+      "is_primary": false,
+      "allow_sso": true,
+      "google_analytics_code": null,
+      "status": "live",
+      "tax_rate_in_percentage": "10.4"
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 400,
+  "success": false,
+  "message": "Child version already present for this address"
+}
+
+// FOR UPDATION --
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child Version updated successfully",
+  "data": {
+    "id": "1",
+    "type": "child_version",
+    "attributes": {
+      "id": 1,
+      "subdomain": "capita",
+      "is_primary": true,
+      "allow_sso": true,
+      "google_analytics_code": null,
+      "status": "live",
+      "tax_rate_in_percentage": "10.4"
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version listed with id 100"
+}
+```
+
+## Get Specific Child Version Edit Details
+This endpoint shows the details of the requested child version edit page.
+
+### HTTP Request
+
+`GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/:id/edit`
+(here, id refers to the child version id)
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+"ex URL -> 'GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/1/edit'"
+
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "child_version": {
+    "data": {
+      "id": "1",
+      "type": "child_version",
+      "attributes": {
+        "id": 1,
+        "subdomain": "capita",
+        "is_primary": true,
+        "allow_sso": true,
+        "google_analytics_code": null,
+        "status": "live",
+        "tax_rate_in_percentage": "10.4"
+      }
+    }
+  },
+  "child_address_detail": {
+    "data": {
+      "id": "1",
+      "type": "address_detail",
+      "attributes": {
+        "id": 1,
+        "child_name": "pirkx 1",
+        "registered_name": "pirkx ltd",
+        "address_line1": "address",
+        "address_line2": null,
+        "address_line3": null,
+        "city": "Jaipur",
+        "postcode": "302012"
+      }
+    }
+  },
+  "child_pricing_detail": {
+    "data": {
+      "id": "1",
+      "type": "child_pricing_detail",
+      "attributes": {
+        "id": 1,
+        "monthly": "10.0",
+        "quarterly": "12.0",
+        "annually": "20.0",
+        "is_bolt_on": false,
+        "bolt_on_name": null,
+        "bolt_on_monthly": null,
+        "bolt_on_quarterly": null,
+        "bolt_on_annually": null
+      }
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version listed with id 100"
+}
+```
+
+## Create/Update Child Pricing Detail
+This endpoint allows Parent Admin to create/update the pricing details for child.
+
+### HTTP Request
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_pricing_details`
+
+````json
+// FOR CREATING NEW ADDRESS
+{
+  "child_pricing_detail": {
+    "monthly": 10,
+    "quarterly": 20,
+    "annually": 25,
+    "is_bolt_on": false,
+    "child_version_id": 1
+  }
+}
+
+// FOR UPDATING NEW ADDRESS
+{
+  "child_pricing_detail": {
+    "id": 1,
+    "monthly": 10,
+    "quarterly": 20,
+    "annually": 25,
+    "is_bolt_on": false
+  }
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+child_pricing_detail[:id] | Integer | Id of Child Pricing Detail to update
+child_pricing_detail[:monthly] | Decimal/String | Monthly pricing of a child (required)
+child_pricing_detail[:quarterly] | Decimal/String | Quarterly pricing of a child (required)
+child_pricing_detail[:annually] | Decimal/String | Annually pricing of a child (required)
+child_pricing_detail[:child_version_id] | Integer | Id of child version required to pass on creation
+child_pricing_detail[:is_bolt_on] | Boolean | Bolt-on setting for child (required) - values in true/false
+child_pricing_detail[:bolt_on_name] | String | Bolt on name required if [:is_bolt_on] setting is passed true
+child_pricing_detail[:bolt_on_monthly] | Decimal/String | Bolt-on Monthly pricing of a child, required if [:is_bolt_on] setting is passed true
+child_pricing_detail[:bolt_on_quarterly] | Decimal/String |Bolt-on Quarterly pricing of a child, required if [:is_bolt_on] setting is passed true
+child_pricing_detail[:bolt_on_annually] | Decimal/String |Bolt-on Annually pricing of a child, required if [:is_bolt_on] setting is passed true
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// FOR CREATION --
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child pricing detail created successfully",
+  "data": {
+    "id": "1",
+    "type": "child_pricing_detail",
+    "attributes": {
+      "id": 1,
+      "monthly": "10.0",
+      "quarterly": "20.0",
+      "annually": "25.0",
+      "is_bolt_on": false,
+      "bolt_on_name": null,
+      "bolt_on_monthly": null,
+      "bolt_on_quarterly": null,
+      "bolt_on_annually": null
+    }
+  }
+}
+
+// Examples of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version listed with id 1"
+}
+
+{
+  "status": 400,
+  "success": false,
+  "message": "Child pricing detail already present for this child version"
+}
+
+// FOR UPDATION --
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child pricing detail updated successfully",
+  "data": {
+    "id": "1",
+    "type": "child_pricing_detail",
+    "attributes": {
+      "id": 1,
+      "monthly": "10.0",
+      "quarterly": "20.0",
+      "annually": "25.0",
+      "is_bolt_on": false,
+      "bolt_on_name": null,
+      "bolt_on_monthly": null,
+      "bolt_on_quarterly": null,
+      "bolt_on_annually": null
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child pricing detail listed with id 1"
+}
+```
+
+## Show Specific Child Pricing Detail
+This endpoint allows Parent Admin to get the pricing detail for a child.
+
+### HTTP Request
+
+`GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_pricing_details/:id`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "data": {
+    "id": "1",
+    "type": "child_pricing_detail",
+    "attributes": {
+      "id": 1,
+      "monthly": "10.0",
+      "quarterly": "12.0",
+      "annually": "20.0",
+      "is_bolt_on": false,
+      "bolt_on_name": null,
+      "bolt_on_monthly": null,
+      "bolt_on_quarterly": null,
+      "bolt_on_annually": null
+    }
+  }
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child pricing detail listed with id 10"
+}
+```
+
 
 # Country
 ## Show All Countries
