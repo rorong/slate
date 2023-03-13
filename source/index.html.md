@@ -58,8 +58,7 @@ This endpoint allows patron to sign in.
 {
   "email": "test@pirkx.com",
   "password": "Welcome@123",
-  "remember_me": true,
-  "browser_detail": "browser_id"
+  "remember_me": true
 }
 ````
 
@@ -70,7 +69,6 @@ Parameter | Type | Description
 email | String | (required)
 password | String | (required)
 remember_me | String/Boolean | values in true/false (default - false)
-browser_detail | String | browser id (required)
 
 > JSON response format:
 
@@ -164,8 +162,7 @@ This endpoint allows patron to sign out.
 
 ````json
 {
-  "token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiM0hBZnFWQjgxU1RjQlVLemVjWlUydyIsImV4cCI6MTY3MjkyNDU5Nn0.C0PfgKdBoMshZee_DNJsY2sO6TpHr-06-cK1CvVzyS-Lx2E6z0I2Ax20tmkz9SI4H_5nDvxNBLuWAb6xjkytobM_ulDlV5XsHtUSsuP3tKdQLnD0NMXw5JBUpshZnXULG03wjz_pTXUuNN4gEZdGcvh6jidJGR7UjRQSeKFxjcOodNhTgkqNUo8Qo9sWVefY4em3RCcJiWoyFQjfnhCC94HLsYO0jTP3WAEfCFYOQtKZ6YEpxT4nC9P69dFjwOQ0UDFroJOHvmM7QJDCUzHsYd7tpipGdu9_b1JqZPno31gutQu7Fa0GE1Kn117Z6d5YH_Aq4zqFihaAGeOwb3tXfA",
-  "browser_detail": "browser_id"
+  "token": "eyJhbGciOiJSUzI1NiJ9.eyJkYXRhIjoiM0hBZnFWQjgxU1RjQlVLemVjWlUydyIsImV4cCI6MTY3MjkyNDU5Nn0.C0PfgKdBoMshZee_DNJsY2sO6TpHr-06-cK1CvVzyS-Lx2E6z0I2Ax20tmkz9SI4H_5nDvxNBLuWAb6xjkytobM_ulDlV5XsHtUSsuP3tKdQLnD0NMXw5JBUpshZnXULG03wjz_pTXUuNN4gEZdGcvh6jidJGR7UjRQSeKFxjcOodNhTgkqNUo8Qo9sWVefY4em3RCcJiWoyFQjfnhCC94HLsYO0jTP3WAEfCFYOQtKZ6YEpxT4nC9P69dFjwOQ0UDFroJOHvmM7QJDCUzHsYd7tpipGdu9_b1JqZPno31gutQu7Fa0GE1Kn117Z6d5YH_Aq4zqFihaAGeOwb3tXfA"
 }
 ````
 
@@ -228,55 +225,6 @@ id | Integer | Patron id (required)
   "success": false,
   "message": "User not found"
 }
-```
-
-## User Check MFA Detail
-This endpoint allows to check if mfa details for a patron is present or not.
-If present, it also checks if it's expired or not.
-
-### HTTP Request
-> JSON request format:
-
-`POST https://auth-app-lb-870023433.eu-west-2.elb.amazonaws.com/api/v1/users/check_mfa_expiration`
-
-````json
-{
-  "email": "test@pirkx.com",
-  "browser_detail": "browser_id"
-}
-````
-
-### Query Parameters
-
-Parameter | Type | Description
---------- | ------- | -----------
-email | String | (required)
-browser_detail | String | browser id (required)
-
-> JSON response format:
-
-```json
-
-// Examples of success responses
-{
-  "status": 200,
-  "success": true,
-  "message": "Mfa already set up"
-}
-
-{
-  "status": 200,
-  "success": true,
-  "message": "Mfa set up expired, need to be set up again"
-}
-
-// Example of failure response
-{
-  "status": 404,
-  "success": false,
-  "message": "User is not present with this email"
-}
-
 ```
 
 # Patrons
@@ -1555,7 +1503,7 @@ Required Headers -> service_authorization, Authorization
 ```
 
 ## Delete Specific Child Address Detail
-This endpoint allows Parent Admin to delete the address detail for a child.
+This endpoint allows Parent Admin to delete the address detail for a child, and its associated version and pricing.
 
 ### HTTP Request
 
@@ -1901,6 +1849,51 @@ Required Headers -> service_authorization, Authorization
   "status": 404,
   "success": false,
   "message": "No child version listed with id 100"
+}
+```
+
+## Delete Specific Child Versions
+This endpoint updates the status of specified child versions to 'deleted'.
+Child Version data is still present.
+
+### HTTP Request
+> JSON request format:
+
+`DELETE https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/destroy_all`
+
+````json
+{
+  "ids": [
+    100, 200
+  ]
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+ids | Array | IDs of child versions that needs to be deleted
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child versions deleted successfully"
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version found with ids 100, 200"
 }
 ```
 
