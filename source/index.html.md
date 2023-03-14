@@ -1805,7 +1805,8 @@ Required Headers -> service_authorization, Authorization
         "allow_sso": true,
         "google_analytics_code": null,
         "status": "live",
-        "tax_rate_in_percentage": "10.4"
+        "tax_rate_in_percentage": "10.4",
+        "is_primary_child_present": false
       }
     }
   },
@@ -2064,6 +2065,37 @@ Required Headers -> service_authorization, Authorization
   "status": 404,
   "success": false,
   "message": "No child pricing detail listed with id 10"
+}
+```
+
+## Check For The Presence Of Primary Child Version
+This endpoint allows Parent Admin to check if the primary child of the parent admin is present or not.
+
+### HTTP Request
+
+`GET https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_pricing_details/check_for_primary_child`
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+- | - | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// No failure response
+
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "is_primary_child_present": true
 }
 ```
 
