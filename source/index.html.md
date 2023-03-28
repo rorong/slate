@@ -1898,6 +1898,192 @@ Required Headers -> service_authorization, Authorization
 }
 ```
 
+## Suspend/Unsuspend Specific Child Versions
+This endpoint updates the status of specified child versions to 'suspended' or 'live' depending upon the params.
+
+### HTTP Request
+> JSON request format:
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/supension`
+
+````json
+{
+  "child_version": {
+    "is_suspended": true,
+    "ids": [
+      100, 200
+    ]
+  }
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+child_version[:is_suspended] | Boolean | To set status to 'suspended' or 'live'. (Allowed values - true/false) (required)
+child_version[:ids] | Array | IDs of child versions that needs to be updated (required)
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Child versions updated successfully"
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "No child version found with ids 100, 200"
+}
+```
+
+## Search Specific Child Versions
+This endpoint returns specific child versions based on the query string passed that matches the status of child versions.
+
+### HTTP Request
+> JSON request format:
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/search`
+
+````json
+{
+  "child_version": {
+    "query_string": "live",
+    "page_no": 2,
+    "items_per_page": 25
+  }
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+child_version[:query_string] | String | Query String to search based on status
+child_version[:page_no] | Integer | -
+child_version[:items_per_page] | Integer | -
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "Success",
+  "data": [
+    {
+      "id": "1",
+      "type": "child_version",
+      "attributes": {
+        "id": 1,
+        "subdomain": "capita",
+        "is_primary": true,
+        "allow_sso": true,
+        "google_analytics_code": null,
+        "status": "live",
+        "child_name": "pirkx 1",
+        "description": "default",
+        "parent_admin": null,
+        "monthly_pricing": "10.0",
+        "gift_card": null,
+        "is_bolt_on": false,
+        "live_members": null
+      }
+    },
+    {
+      "id": "3",
+      "type": "child_version",
+      "attributes": {
+        "id": 3,
+        "subdomain": "capita",
+        "is_primary": true,
+        "allow_sso": true,
+        "google_analytics_code": null,
+        "status": "live",
+        "child_name": "pirkx",
+        "description": "default",
+        "parent_admin": null,
+        "monthly_pricing": "10.0",
+        "gift_card": null,
+        "is_bolt_on": false,
+        "live_members": null
+      }
+    }
+  ],
+  "total_page_count": 2
+}
+
+// Example of failure response
+{
+  "status": 400,
+  "success": false,
+  "message": "Search string too small. Minimum length is 3 characters."
+}
+```
+
+## Export Specific Child Versions
+This endpoint exports the details of specified child versions.
+
+### HTTP Request
+> JSON request format:
+
+`POST https://users-app-lb-68799060.eu-west-2.elb.amazonaws.com/api/v1/child_versions/export`
+
+````json
+{
+  "child_version": {
+    "export": {
+      "export_ids": "1, 2"
+    }
+  }
+}
+````
+
+### Query Parameters
+
+Parameter | Type | Description
+--------- | ------- | -----------
+child_version[:export][:export_ids] | String | Ids of child versios that needs to export <br> (ids are seperated by ,) ex: "100, 200"
+
+If no ids (ie, empty string "") are passed in :export_ids param, all child versions of current user are exported. <br> If :export_ids contain ids (muliple ids separated by comma), all data of the specified child version ids are exported. <br> If the data of ids mentioned does not exist, it returns error message.
+
+### Query Headers
+
+Required Headers -> service_authorization, Authorization
+
+> JSON response format:
+
+```json
+// Example of success response
+{
+  "status": 200,
+  "success": true,
+  "message": "CSV successfully exported",
+  "download_url": "https://example.amazonaws.com/export_files/child_versions.csv?Faws4_request&X-Amz-Date=20230110T090431Z&X-Amz-Expires=1500&X-Amz-SignedHeaders=host&X-Amz-Signature=0095a23sabc8f868"
+}
+
+// Example of failure response
+{
+  "status": 404,
+  "success": false,
+  "message": "Specified child version data not found"
+}
+```
+
 ## Create/Update Child Pricing Detail
 This endpoint allows Parent Admin to create/update the pricing details for child.
 
